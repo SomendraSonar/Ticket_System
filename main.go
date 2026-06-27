@@ -11,6 +11,13 @@ func main() {
 
 	r := gin.Default()
 
+	// Home Route
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "Ticket System API is running",
+		})
+	})
+
 	// Health Check
 	r.GET("/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{
