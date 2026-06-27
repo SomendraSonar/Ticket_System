@@ -1,6 +1,10 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"os"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 	InitDB()
@@ -27,5 +31,11 @@ func main() {
 	auth.GET("/tickets/:id", GetTicket)
 	auth.PATCH("/tickets/:id/status", UpdateStatus)
 
-	r.Run(":8080")
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
+
+	r.Run(":" + port)
 }
