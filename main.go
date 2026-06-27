@@ -14,7 +14,7 @@ func main() {
 	// Home Route
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": "Ticket System API is running",
+			"status": "ok",
 		})
 	})
 
@@ -38,6 +38,7 @@ func main() {
 	auth.GET("/tickets/:id", GetTicket)
 	auth.PATCH("/tickets/:id/status", UpdateStatus)
 
+	// Render PORT support
 	port := os.Getenv("PORT")
 
 	if port == "" {
